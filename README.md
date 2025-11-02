@@ -1,6 +1,4 @@
-# cv_Andreza-API
-
-# 💼 CV API — Express + PostgreSQL
+# cv_Andreza-API — Express + PostgreSQL
 
 Projeto criado por **Andreza Carrilho**.  
 API REST para gerenciar currículos com **CRUD completo**, incluindo entidades como pessoas, experiências, formações, habilidades e idiomas.  
