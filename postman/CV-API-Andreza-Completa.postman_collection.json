@@ -335,7 +335,7 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "http://localhost:4000"
+			"value": "https://cv-andreza-api.vercel.app"
 		},
 		{
 			"key": "personId",
