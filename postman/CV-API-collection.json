@@ -1,98 +1,353 @@
 {
-  "info": {
-    "name": "CV API",
-    "_postman_id": "12345678-90ab-cdef-1234-567890abcdef",
-    "description": "Coleção para testar todos os endpoints da API de currículos",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-  },
-  "variable": [
-    {
-      "key": "baseUrl",
-      "value": "http://localhost:4000"
-    },
-    {
-      "key": "personId",
-      "value": "1"
-    }
-  ],
-  "item": [
-    {
-      "name": "Listar pessoas",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/people",
-          "host": ["{{baseUrl}}"],
-          "path": ["people"]
-        }
-      }
-    },
-    {
-      "name": "Buscar pessoa por ID",
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/people/{{personId}}",
-          "host": ["{{baseUrl}}"],
-          "path": ["people", "{{personId}}"]
-        }
-      }
-    },
-    {
-      "name": "Criar pessoa",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"name\": \"Luíze Carrilho\",\n  \"title\": \"Desenvolvedora Web\",\n  \"summary\": \"Apaixonada por tecnologia e arte\"\n}"
-        },
-        "url": {
-          "raw": "{{baseUrl}}/people",
-          "host": ["{{baseUrl}}"],
-          "path": ["people"]
-        }
-      }
-    },
-    {
-      "name": "Atualizar pessoa",
-      "request": {
-        "method": "PUT",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"name\": \"Luíze Carrilho\",\n  \"title\": \"Front-End Developer\",\n  \"summary\": \"Atualizei o título\"\n}"
-        },
-        "url": {
-          "raw": "{{baseUrl}}/people/{{personId}}",
-          "host": ["{{baseUrl}}"],
-          "path": ["people", "{{personId}}"]
-        }
-      }
-    },
-    {
-      "name": "Deletar pessoa",
-      "request": {
-        "method": "DELETE",
-        "header": [],
-        "url": {
-          "raw": "{{baseUrl}}/people/{{personId}}",
-          "host": ["{{baseUrl}}"],
-          "path": ["people", "{{personId}}"]
-        }
-      }
-    }
-  ]
+	"info": {
+		"_postman_id": "c1a0c0b8-6a5a-4e2e-8e5e-1a5a3a2a7b8e",
+		"name": "CV API (Completa)",
+		"description": "Coleção com entidades e relacionamentos (Person, Experience, Education)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pessoa (Geral)",
+			"item": [
+				{
+					"name": "Listar TODAS as pessoas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar pessoa por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Criar pessoa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Novo Usuário\",\n  \"title\": \"Nova Posição\",\n  \"summary\": \"Novo sumário aqui.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/people",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar pessoa",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Usuário Atualizado\",\n  \"title\": \"Posição Atualizada\",\n  \"summary\": \"Sumário atualizado.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar pessoa",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Experiência (Relacionamento)",
+			"item": [
+				{
+					"name": "Listar experiências de UMA pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}/experience",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}",
+								"experience"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar experiência para UMA pessoa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Novo Trabalho\",\n  \"company\": \"Empresa Nova\",\n  \"dates\": \"2025\",\n  \"description\": \"Minha nova descrição de trabalho.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}/experience",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}",
+								"experience"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar UMA experiência",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Trabalho Atualizado\",\n  \"company\": \"Empresa Atualizada\",\n  \"dates\": \"2025-2026\",\n  \"description\": \"Descrição atualizada.\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/experience/{{experienceId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"experience",
+								"{{experienceId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar UMA experiência",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/experience/{{experienceId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"experience",
+								"{{experienceId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Educação (Relacionamento)",
+			"item": [
+				{
+					"name": "Listar educação de UMA pessoa",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}/education",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}",
+								"education"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Adicionar educação para UMA pessoa",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"degree\": \"Novo Curso\",\n  \"school\": \"Nova Escola\",\n  \"dates\": \"2026\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/people/{{personId}}/education",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"people",
+								"{{personId}}",
+								"education"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar UMA educação",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"degree\": \"Curso Atualizado\",\n  \"school\": \"Escola Atualizada\",\n  \"dates\": \"2026-2027\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/education/{{educationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"education",
+								"{{educationId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar UMA educação",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/education/{{educationId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"education",
+								"{{educationId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:4000"
+		},
+		{
+			"key": "personId",
+			"value": "1"
+		},
+		{
+			"key": "experienceId",
+			"value": "1"
+		},
+		{
+			"key": "educationId",
+			"value": "1"
+		}
+	]
 }
