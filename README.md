@@ -6,16 +6,15 @@ A API permite operações CRUD (Criar, Ler, Atualizar, Deletar) completas para P
 
 O banco de dados está hospedado no Render e a API está publicada na Vercel.
 
-🚀 #API no Ar (Deploy na Vercel)
+# 🚀 API no Ar (Deploy na Vercel)
 
 A API está publicada e pode ser acessada publicamente através do seguinte link:
-
 https://cv-andreza-api.vercel.app
 
 Você pode testar a rota principal no navegador:
-# https://cv-andreza-api.vercel.app/people
+https://cv-andreza-api.vercel.app/people
 
-🛠️ Tecnologias Utilizadas
+# 🛠️ Tecnologias Utilizadas
 
 Node.js: Ambiente de execução do JavaScript no servidor.
 
@@ -33,7 +32,7 @@ dotenv: Para gerenciar variáveis de ambiente.
 
 cors: Para permitir acesso à API de diferentes origens.
 
-🗂️ Estrutura do Banco de Dados
+# 🗂️ Estrutura do Banco de Dados
 
 O banco de dados é relacional e possui 3 tabelas principais:
 
@@ -73,7 +72,7 @@ dates (VARCHAR): Período (ex: "2022 - 2025").
 
 person_id (INTEGER, FK): Chave estrangeira que referencia person(id).
 
-📖 Endpoints da API
+# 📖 Endpoints da API
 
 Abaixo estão todos os endpoints disponíveis na API.
 
@@ -149,7 +148,7 @@ DELETE /education/:edu_id
 
 Deleta UMA formação específica (pelo edu_id da formação).
 
-💻 Como Rodar Localmente (Desenvolvimento)
+# 💻 Como Rodar Localmente (Desenvolvimento)
 
 Clone o repositório:
 
