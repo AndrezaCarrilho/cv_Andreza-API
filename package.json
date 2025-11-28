@@ -1,5 +1,6 @@
 {
   "name": "cv-api",
+  "type": "module",
   "version": "1.0.0",
   "description": "API REST para currículo usando Express + PostgreSQL",
   "main": "src/index.js",
